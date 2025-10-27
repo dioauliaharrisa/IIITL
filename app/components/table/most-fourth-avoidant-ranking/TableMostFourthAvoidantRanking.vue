@@ -110,7 +110,9 @@ const columns = [
 <template>
   <UCollapsible class="w-full flex flex-col gap-2">
     <div class="p-4 bg-primary">
-      <h2 class="text-center text-2xl uppercase text-white">Player Ranking</h2>
+      <h2 class="text-center text-2xl uppercase text-white">
+        Most 4th Avoidant Ranking
+      </h2>
     </div>
 
     <template #content>

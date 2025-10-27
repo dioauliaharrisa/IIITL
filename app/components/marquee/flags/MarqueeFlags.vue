@@ -22,7 +22,7 @@ const countries = [
 
 <template>
   <UMarquee
-    reverse="true"
+    :reverse="true"
     :ui="{ root: '[--gap:--spacing(4)]', content: 'w-auto py-1' }"
   >
     <NuxtImg

@@ -7,6 +7,8 @@
         <MarqueeFlags />
         <TableCountryRanking />
         <TableIndividualScoreRanking />
+        <TableHighestScore />
+        <TableMostFourthAvoidantRanking />
       </UMain>
       <UFooter>
         <template #left>

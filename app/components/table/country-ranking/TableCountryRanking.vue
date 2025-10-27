@@ -1,4 +1,11 @@
 <script setup>
+import PublicGoogleSheetsParser from "public-google-sheets-parser";
+const parser = new PublicGoogleSheetsParser(
+  "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc"
+);
+parser.parse().then((data) => {
+  console.log(666, data);
+});
 const countries = [
   { name: "Indonesia", code: "ID", points: 248 },
   { name: "Australia", code: "AU", points: 310 },
@@ -41,8 +48,8 @@ const columns = [
 
 <template>
   <UCollapsible class="w-full flex flex-col gap-2">
-    <div class="p-4 bg-amber-400">
-      <h2 class="text-center text-2xl uppercase">Country Ranking</h2>
+    <div class="p-4 bg-primary">
+      <h2 class="text-center text-2xl uppercase text-white">Country Ranking</h2>
     </div>
     <template #content>
       <div>

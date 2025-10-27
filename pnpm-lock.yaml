@@ -38,6 +38,9 @@ importers:
       nuxt:
         specifier: ^4.2.0
         version: 4.2.0(@parcel/watcher@2.5.1)(@vue/compiler-sfc@3.5.22)(db0@0.3.4)(eslint@9.38.0(jiti@2.6.1))(ioredis@5.8.2)(lightningcss@1.30.2)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.52.5)(terser@5.44.0)(typescript@5.9.3)(vite@7.1.12(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)(yaml@2.8.1))(yaml@2.8.1)
+      public-google-sheets-parser:
+        specifier: ^1.5.4
+        version: 1.5.4
       typescript:
         specifier: ^5.6.3
         version: 5.9.3
@@ -3864,6 +3867,9 @@ packages:
 
   protocols@2.0.2:
     resolution: {integrity: sha512-hHVTzba3wboROl0/aWRRG9dMytgH6ow//STBZh43l/wQgmMhYhOFi0EHWAPtoCz9IAUymsyP0TSBHkhgMEGNnQ==}
+
+  public-google-sheets-parser@1.5.4:
+    resolution: {integrity: sha512-NPjeXtT7Nk+Q9jRt1mdSCtWdqEbZLiNa5+aVR1U/1W/6hfnCAAJF9HSz/UA2VUxo5YEPWxZW3Nxotbt8rU2JWQ==}
 
   pump@3.0.3:
     resolution: {integrity: sha512-todwxLMY7/heScKmntwQG8CXVkWUOdYxIvY2s0VWAAMh/nd8SoYiRaKjlr7+iCs984f2P8zvrfWcDDYVb73NfA==}
@@ -9203,6 +9209,8 @@ snapshots:
       sisteransi: 1.0.5
 
   protocols@2.0.2: {}
+
+  public-google-sheets-parser@1.5.4: {}
 
   pump@3.0.3:
     dependencies:
