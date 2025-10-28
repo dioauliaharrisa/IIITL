@@ -1,4 +1,5 @@
 <script setup>
+const isOpen = ref(false);
 const players = [
   {
     name: "Alex Carter",
@@ -108,9 +109,20 @@ const columns = [
 </script>
 
 <template>
-  <UCollapsible class="w-full flex flex-col gap-2">
+  <UCollapsible
+    :open="isOpen"
+    class="w-full flex flex-col gap-2"
+    @update:open="isOpen = $event"
+  >
     <div class="p-4 bg-primary">
-      <h2 class="text-center text-2xl uppercase text-white">Player Ranking</h2>
+      <h2
+        :class="[
+          'text-xl uppercase text-white transition-all duration-700 transform',
+          isOpen ? 'translate-x-0 font-semibold' : 'translate-x-1/12 ',
+        ]"
+      >
+        Player Ranking
+      </h2>
     </div>
 
     <template #content>

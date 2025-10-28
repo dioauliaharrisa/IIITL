@@ -1,9 +1,18 @@
 <script setup></script>
 
 <template>
-  <UCollapsible class="w-full flex flex-col gap-2">
+  <UCollapsible
+    :open="isOpen"
+    class="w-full flex flex-col gap-2"
+    @update:open="isOpen = $event"
+  >
     <div class="p-4 bg-primary">
-      <h2 class="text-center text-2xl uppercase text-white">
+      <h2
+        :class="[
+          'text-xl uppercase text-white transition-all duration-700 transform',
+          isOpen ? 'translate-x-0' : 'translate-x-1/12 ',
+        ]"
+      >
         Upcoming Match Schedule
       </h2>
     </div>

@@ -1,11 +1,12 @@
 <script setup>
-import PublicGoogleSheetsParser from "public-google-sheets-parser";
-const parser = new PublicGoogleSheetsParser(
-  "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc"
-);
-parser.parse().then((data) => {
-  console.log(666, data);
-});
+const isOpen = ref(false);
+// import PublicGoogleSheetsParser from "public-google-sheets-parser";
+// const parser = new PublicGoogleSheetsParser(
+//   "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc"
+// );
+// parser.parse().then((data) => {
+//   console.log(666, data);
+// });
 const countries = [
   { name: "Indonesia", code: "ID", points: 248 },
   { name: "Australia", code: "AU", points: 310 },
@@ -47,9 +48,20 @@ const columns = [
 </script>
 
 <template>
-  <UCollapsible class="w-full flex flex-col gap-2">
+  <UCollapsible
+    :open="isOpen"
+    class="w-full flex flex-col gap-2"
+    @update:open="isOpen = $event"
+  >
     <div class="p-4 bg-primary">
-      <h2 class="text-center text-2xl uppercase text-white">Country Ranking</h2>
+      <h2
+        :class="[
+          'text-xl uppercase text-white transition-all duration-700 transform',
+          isOpen ? 'translate-x-0' : 'translate-x-1/12 ',
+        ]"
+      >
+        Country Ranking
+      </h2>
     </div>
     <template #content>
       <div>
