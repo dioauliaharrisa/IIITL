@@ -9,8 +9,8 @@
     <div class="p-4 bg-primary">
       <h2
         :class="[
-          'text-xl uppercase text-white transition-all duration-700 transform',
-          isOpen ? 'translate-x-0' : 'translate-x-1/12 ',
+          'text-xl uppercase text-white transition-all duration-1000 transform',
+          isOpen ? 'font-semibold' : 'font-normal',
         ]"
       >
         Upcoming Match Schedule

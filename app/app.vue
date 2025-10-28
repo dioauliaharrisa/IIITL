@@ -1,7 +1,9 @@
 <template>
   <UApp>
     <NuxtRouteAnnouncer />
-    <div class="border-8 border-[#009a44] h-full">
+    <div
+      class="border-8 border-[#009a44] box-border min-h-screen w-full overflow-x-hidden"
+    >
       <SectionHeader />
       <UMain>
         <MarqueeFlags />
@@ -17,5 +19,3 @@
     </div>
   </UApp>
 </template>
-
-<script setup></script>
