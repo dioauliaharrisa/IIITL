@@ -5,18 +5,14 @@
       <UHeader title="IIITL" />
       <UMain>
         <MarqueeFlags />
+        <SectionVisionAndMission />
         <TableCountryRanking />
         <TableIndividualScoreRanking />
         <TableHighestScore />
         <TableMostFourthAvoidantRanking />
+        <SectionSchedule />
       </UMain>
-      <UFooter>
-        <template #left>
-          <p class="text-muted text-sm">
-            Copyright © {{ new Date().getFullYear() }}
-          </p>
-        </template>
-      </UFooter>
+      <LazySectionFooter />
       <FloatingButton />
     </div>
   </UApp>
