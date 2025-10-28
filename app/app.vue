@@ -2,7 +2,7 @@
   <UApp>
     <NuxtRouteAnnouncer />
     <div class="border-8 border-[#009a44] h-full">
-      <UHeader title="IIITL" />
+      <SectionHeader />
       <UMain>
         <MarqueeFlags />
         <SectionVisionAndMission />
