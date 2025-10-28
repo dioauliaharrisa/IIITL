@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+const isOpen = ref(false);
+</script>
 
 <template>
   <UCollapsible

@@ -1,4 +1,5 @@
 <script setup>
+import PublicGoogleSheetsParser from "public-google-sheets-parser";
 const isOpen = ref(false);
 const players = [
   {
@@ -106,6 +107,18 @@ const columns = [
     size: 100,
   },
 ];
+
+const options = { sheetName: "Sheet7", useFormat: true };
+
+const playersData = ref([]);
+const parser = new PublicGoogleSheetsParser(
+  "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
+  options
+);
+parser.parse().then((data) => {
+  playersData.value.push(data);
+  console.log("🦆 ~ playersData:", playersData);
+});
 </script>
 
 <template>
