@@ -1,12 +1,14 @@
 <script setup>
+import PublicGoogleSheetsParser from "public-google-sheets-parser";
 const isOpen = ref(false);
-// import PublicGoogleSheetsParser from "public-google-sheets-parser";
-// const parser = new PublicGoogleSheetsParser(
-//   "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc"
-// );
-// parser.parse().then((data) => {
-//   console.log(666, data);
-// });
+const options = { sheetName: "Rules", useFormat: true };
+const parser = new PublicGoogleSheetsParser(
+  "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
+  options
+);
+parser.parse().then((data) => {
+  console.log(666, data);
+});
 const countries = [
   { name: "Indonesia", code: "ID", points: 248 },
   { name: "Australia", code: "AU", points: 310 },
