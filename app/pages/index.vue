@@ -5,12 +5,12 @@
       <SectionVisionAndMission />
       <SectionCheckCurrentStanding />
       <TableCountryRanking />
-      <TableIndividualScoreRanking />
-      <TableHighestScore />
-      <TableMostFourthAvoidantRanking />
-      <SectionSchedule />
+      <LazyTableIndividualScoreRanking />
+      <LazyTableHighestScore />
+      <LazyTableMostFourthAvoidantRanking />
+      <LazySectionSchedule />
     </UMain>
     <LazySectionFooter />
-    <FloatingButton />
+    <LazyFloatingButton />
   </div>
 </template>
