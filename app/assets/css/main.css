@@ -13,20 +13,13 @@
   --ui-secondary: #ee121b;
 }
 
-/* --- 2. Override for Simplified Chinese (CN) Locale --- */
-/* The @nuxtjs/i18n module adds the class lang-{code} to the <html> element */
-html[lang="cn"] {
-  /* This ensures all text using 'font-sans' uses Noto Sans SC */
+html.lang-cn {
   --font-sans-cn: "Noto Sans SC", sans-serif;
 }
 
 /* --- 3. Override for Traditional Chinese (TW or HK) Locale --- */
 html.lang-tw,
-html.lang-hk {
-  /* Use 'Noto Sans TC' for Traditional Chinese regions */
-  --font-sans: "Noto Sans TC", sans-serif;
-}
-/* You can also use html.lang-zh for a generic Traditional Chinese code */
+html.lang-hk,
 html.lang-zh {
   --font-sans: "Noto Sans TC", sans-serif;
 }
