@@ -53,7 +53,7 @@ const columns = [
           <template #name-cell="{ row }">
             <div class="flex items-center gap-2">
               <NuxtImg
-                :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${row.original.code}.svg`"
+                :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/${row.original.code}.svg`"
                 width="28"
                 height="20"
                 class="rounded-sm"
