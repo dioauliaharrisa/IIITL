@@ -1,11 +1,11 @@
 {
   "check_standing_graph": "Check Standing Graph",
-  "country_ranking": "Country Ranking",
-  "player_ranking": "Player Ranking",
-  "highest_scorer_ranking": "Highest Scorers Ranking",
+  "country_ranking": "Team/Country Ranking",
+  "player_ranking": "Individual Ranking",
+  "highest_scorer_ranking": "Top Scorers Ranking",
   "most_4th_avoidant_ranking": "Most 4th Avoidant Ranking",
   "upcoming_match_schedule": "Upcoming Match Schedule",
   "vision_mission_1st_sentence": "has always wanted to make an international scale riichi tournament, and finally stars aligned, making it happen with the",
-  "vision_mission_2nd_sentence": "We believe that more international tournament are needed spanning a longer period of time to test consistency and grit of skillful players. We also want to give players the opportunity to spend some time as commentators, sharing their own perspectives on the game.",
+  "vision_mission_2nd_sentence": "We believe that more international tournament—spanning a longer period of time—to test consistency and grit of skillful players. We also want to give players the opportunity to spend some time as commentators, sharing their own perspectives on the game.",
   "vision_mission_3rd_sentence": "May the winner be the best player!"
 }
