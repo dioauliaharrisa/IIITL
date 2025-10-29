@@ -449,25 +449,27 @@ const xFormatter = (i) => data[i].month;
 </script>
 
 <template>
-  <UModal fullscreen title="Modal fullscreen" :ui="{ header: '' }">
+  <UModal fullscreen title="Modal fullscreen" :ui="{ header: 'text-white' }">
     <div class="flex justify-center">
-      <UButton label="CHECK CURRENT STANDING" class="rounded-full p-4 m-4" />
+      <UButton class="rounded-full p-4 m-4">
+        {{ $t("check_standing_graph") }}</UButton
+      >
     </div>
 
     <template #body>
       <!-- <div class="rotate-90 origin-center w-full"> -->
-        <LineChart
-          x-label="Month"
-          y-label="Amount"
-          :data="data"
-          :categories="categories"
-          :height="600"
-          :x-formatter="xFormatter"
-          :y-grid-line="true"
-          :curve-type="CurveType.Linear"
-          :legend-position="LegendPosition.TopRight"
-          :hide-legend="false"
-        />
+      <LineChart
+        x-label="Month"
+        y-label="Amount"
+        :data="data"
+        :categories="categories"
+        :height="600"
+        :x-formatter="xFormatter"
+        :y-grid-line="true"
+        :curve-type="CurveType.Linear"
+        :legend-position="LegendPosition.TopRight"
+        :hide-legend="false"
+      />
       <!-- </div> -->
     </template>
   </UModal>
