@@ -3,7 +3,7 @@
     <UMain>
       <MarqueeFlags />
       <SectionVisionAndMission />
-      <SectionCheckCurrentStanding />
+      <LazySectionCheckCurrentStanding />
       <TableCountryRanking />
       <LazyTableIndividualScoreRanking />
       <LazyTableHighestScore />
