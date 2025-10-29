@@ -49,7 +49,7 @@ const columns = [
     <div class="p-4 bg-primary">
       <h2
         :class="[
-          'text-xl uppercase text-white transition-all duration-1000 transform',
+          'font-sans text-xl uppercase text-white transition-all duration-1000 transform',
           isOpen ? 'font-semibold' : 'font-normal',
         ]"
       >

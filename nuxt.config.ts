@@ -28,7 +28,13 @@ export default defineNuxtConfig({
     },
   },
   fonts: {
-    families: [{ name: "Oswald", provider: "google" }],
+    families: [
+      { name: "Noto Sans", provider: "google" },
+      { name: "Noto Sans SC", provider: "google" }, // Simplified Chinese (SC)
+      { name: "Noto Sans TC", provider: "google" }, // Traditional Chinese (TC)
+      // Optional: Add a serif version if needed
+      // { name: "Noto Serif TC", provider: "google" },
+    ],
     defaults: {
       weights: [400],
       styles: ["normal", "italic"],
@@ -44,6 +50,7 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
+    strategy: "no_prefix",
     defaultLocale: "en",
     locales: [
       {
