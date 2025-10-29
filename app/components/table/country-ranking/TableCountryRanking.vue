@@ -53,7 +53,7 @@ const columns = [
           isOpen ? 'font-semibold' : 'font-normal',
         ]"
       >
-        Country Ranking
+        {{ $t("country_ranking") }}
       </h2>
     </div>
     <template #content>

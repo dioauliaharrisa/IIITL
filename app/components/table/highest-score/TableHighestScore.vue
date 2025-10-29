@@ -121,7 +121,7 @@ const columns = [
           isOpen ? 'font-semibold' : 'font-normal',
         ]"
       >
-        Highest Scorers Ranking
+        {{ $t("highest_scorer_ranking") }}
       </h2>
     </div>
 

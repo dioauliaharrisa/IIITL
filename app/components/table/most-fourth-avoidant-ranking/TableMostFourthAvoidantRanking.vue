@@ -121,7 +121,7 @@ const columns = [
           isOpen ? 'font-semibold' : 'font-normal',
         ]"
       >
-        Most 4th Avoidant Ranking
+        {{ $t("most_4th_avoidant_ranking") }}
       </h2>
     </div>
 

@@ -134,7 +134,7 @@ parser.parse().then((data) => {
           isOpen ? 'font-semibold' : 'font-normal',
         ]"
       >
-        Player Ranking
+        {{ $t("player_ranking") }}
       </h2>
     </div>
 

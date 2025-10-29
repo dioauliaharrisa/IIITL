@@ -15,7 +15,7 @@ const isOpen = ref(false);
           isOpen ? 'font-semibold' : 'font-normal',
         ]"
       >
-        Upcoming Match Schedule
+        {{ $t("upcoming_match_schedule") }}
       </h2>
     </div>
 
