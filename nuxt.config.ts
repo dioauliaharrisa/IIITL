@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxt/scripts",
     "@vueuse/nuxt",
+    "nuxt-charts",
   ],
   css: ["~/assets/css/main.css"],
   ui: {
