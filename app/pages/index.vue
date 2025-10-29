@@ -10,7 +10,6 @@
       <LazyTableMostFourthAvoidantRanking />
       <LazySectionSchedule />
     </UMain>
-    <LazySectionFooter />
     <LazyFloatingButton />
   </div>
 </template>

@@ -70,4 +70,10 @@ export default defineNuxtConfig({
       },
     ],
   },
+  app: {
+    head: {
+      title: "IIITL 2026",
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
+    },
+  },
 });

@@ -4,5 +4,6 @@
   >
     <SectionHeader />
     <slot />
+    <SectionFooter />
   </div>
 </template>
