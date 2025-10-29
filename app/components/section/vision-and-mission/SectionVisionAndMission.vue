@@ -1,5 +1,5 @@
 <template>
-  <p class="p-8 leading-6 text-center">
+  <p class="p-8 leading-6 text-center text-xs">
     <strong> Riichi Indonesia </strong> {{ $t("vision_mission_1st_sentence") }}
     <strong>
       Indonesia International Invitational Tournament of Riichi Mahjong 2026.
