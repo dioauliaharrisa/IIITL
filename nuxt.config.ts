@@ -10,6 +10,8 @@ export default defineNuxtConfig({
     "@nuxt/scripts",
     "@vueuse/nuxt",
     "nuxt-charts",
+    "@nuxt/fonts",
+    "@nuxtjs/i18n",
   ],
   css: ["~/assets/css/main.css"],
   ui: {
@@ -22,6 +24,22 @@ export default defineNuxtConfig({
         "success",
         "warning",
         "error",
+      ],
+    },
+  },
+  fonts: {
+    families: [{ name: "Oswald", provider: "google" }],
+    defaults: {
+      weights: [400],
+      styles: ["normal", "italic"],
+      subsets: [
+        "cyrillic-ext",
+        "cyrillic",
+        "greek-ext",
+        "greek",
+        "vietnamese",
+        "latin-ext",
+        "latin",
       ],
     },
   },
