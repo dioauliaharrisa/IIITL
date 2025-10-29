@@ -1,7 +1,7 @@
 <template>
   <div>
     <UMain>
-      <MarqueeFlags />
+      <!-- <MarqueeFlags /> -->
       <SectionVisionAndMission />
       <LazySectionCheckCurrentStanding />
       <TableCountryRanking />

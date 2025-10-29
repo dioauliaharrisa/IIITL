@@ -52,12 +52,7 @@ const columns = [
         <UTable :data="countries" :columns="columns" class="flex-1">
           <template #name-cell="{ row }">
             <div class="flex items-center gap-2">
-              <NuxtImg
-                :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/${row.original.code}.svg`"
-                width="28"
-                height="20"
-                class="rounded-sm"
-              />
+             
               <span>{{ row.original.name }}</span>
             </div>
           </template>
