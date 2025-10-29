@@ -458,7 +458,7 @@ const xFormatter = (i) => data[i].month;
 
     <template #body>
       <!-- <div class="rotate-90 origin-center w-full"> -->
-      <LineChart
+      <!-- <LineChart
         x-label="Month"
         y-label="Amount"
         :data="data"
@@ -469,7 +469,7 @@ const xFormatter = (i) => data[i].month;
         :curve-type="CurveType.Linear"
         :legend-position="LegendPosition.TopRight"
         :hide-legend="false"
-      />
+      /> -->
       <!-- </div> -->
     </template>
   </UModal>
