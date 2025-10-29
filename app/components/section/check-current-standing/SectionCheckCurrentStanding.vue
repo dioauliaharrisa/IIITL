@@ -450,11 +450,9 @@ const xFormatter = (i) => data[i].month;
 
 <template>
   <UModal fullscreen title="Modal fullscreen" :ui="{ header: 'text-white' }">
-    <div class="flex justify-center">
-      <UButton class="rounded-full p-4 m-4">
-        {{ $t("check_standing_graph") }}</UButton
-      >
-    </div>
+    <UButton class="rounded-full p-4 m-4 mx-auto block">
+      {{ $t("check_standing_graph") }}</UButton
+    >
 
     <template #body>
       <!-- <div class="rotate-90 origin-center w-full"> -->
