@@ -29,9 +29,9 @@ export default defineNuxtConfig({
   },
   fonts: {
     families: [
-      { name: "Noto Sans", provider: "google", display: "swap" },
-      { name: "Noto Sans SC", provider: "google", display: "swap" }, // Simplified Chinese (SC)
-      { name: "Noto Sans TC", provider: "google", display: "swap" }, // Traditional Chinese (TC)
+      { name: "Noto Sans", provider: "google" },
+      { name: "Noto Sans SC", provider: "google" }, // Simplified Chinese (SC)
+      { name: "Noto Sans TC", provider: "google" }, // Traditional Chinese (TC)
       // Optional: Add a serif version if needed
       // { name: "Noto Serif TC", provider: "google" },
     ],
@@ -73,15 +73,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "IIITL 2026",
-      link: [
-        { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
-        {
-          rel: "preconnect",
-          href: "https://iiti-iota.vercel.app",
-          crossorigin: "",
-        },
-        { rel: "preload", href: "/_nuxt/entry.C1yHPxNT.css", as: "style" },
-      ],
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
     },
   },
 });
