@@ -29,9 +29,9 @@ export default defineNuxtConfig({
   },
   fonts: {
     families: [
-      { name: "Noto Sans", provider: "google" },
-      { name: "Noto Sans SC", provider: "google" }, // Simplified Chinese (SC)
-      { name: "Noto Sans TC", provider: "google" }, // Traditional Chinese (TC)
+      { name: "Noto Sans", provider: "google", display: "swap" },
+      { name: "Noto Sans SC", provider: "google", display: "swap" }, // Simplified Chinese (SC)
+      { name: "Noto Sans TC", provider: "google", display: "swap" }, // Traditional Chinese (TC)
       // Optional: Add a serif version if needed
       // { name: "Noto Serif TC", provider: "google" },
     ],
@@ -81,13 +81,6 @@ export default defineNuxtConfig({
           crossorigin: "",
         },
         { rel: "preload", href: "/_nuxt/entry.C1yHPxNT.css", as: "style" },
-        {
-          rel: "preload",
-          href: "/_fonts/uYeV1Ex21.woff",
-          as: "font",
-          type: "font/woff2",
-          crossorigin: "",
-        },
       ],
     },
   },
