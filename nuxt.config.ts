@@ -73,7 +73,22 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "IIITL 2026",
-      link: [{ rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
+      link: [
+        { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
+        {
+          rel: "preconnect",
+          href: "https://iiti-iota.vercel.app",
+          crossorigin: "",
+        },
+        { rel: "preload", href: "/_nuxt/entry.C1yHPxNT.css", as: "style" },
+        {
+          rel: "preload",
+          href: "/_fonts/uYeV1Ex21.woff",
+          as: "font",
+          type: "font/woff2",
+          crossorigin: "",
+        },
+      ],
     },
   },
 });
