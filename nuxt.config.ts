@@ -81,4 +81,9 @@ export default defineNuxtConfig({
       ],
     },
   },
+  nitro: {
+    compressPublicAssets: {
+      brotli: true,
+    },
+  },
 });
