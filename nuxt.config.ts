@@ -74,6 +74,9 @@ export default defineNuxtConfig({
     head: {
       title: "IIITL 2026",
       link: [{ rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
+      htmlAttrs: {
+        lang: "en", // or 'id' for Indonesian
+      },
       noscript: [
         {
           children: '<link rel="stylesheet" href="/_nuxt/entry.C1yHPxNT.css">',

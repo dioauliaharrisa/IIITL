@@ -18,6 +18,7 @@ const value = ref("en");
     <template #right
       ><USelect
         v-model="value"
+        aria-label="Select language"
         :items="locales"
         value-key="code"
         label-key="name"

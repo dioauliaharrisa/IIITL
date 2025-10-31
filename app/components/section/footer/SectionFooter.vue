@@ -4,6 +4,7 @@
       <div class="flex flex-col items-center">
         <NuxtImg
           src="../../logo_riichi_id.png"
+          alt="riichi_id_logo"
           width="100"
           height="100"
           class="object-cover"
