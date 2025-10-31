@@ -5,8 +5,8 @@
   --font-sans: "Noto Sans", "Noto Sans SC", "Noto Sans TC", system-ui,
     sans-serif;
   --font-sans-cn: "Noto Sans SC", system-ui, sans-serif;
-  --font-heading: "Oswald", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  /* --font-heading: "Oswald", sans-serif; */
+  /* --font-mono: "JetBrains Mono", monospace; */
 }
 :root {
   --ui-primary: #009a44;
