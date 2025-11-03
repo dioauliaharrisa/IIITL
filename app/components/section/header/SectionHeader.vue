@@ -13,6 +13,7 @@ const value = ref("en");
         src="/logo_full.svg"
         alt="Logo"
         class="w-[125px]"
+        size="125px"
         @click="$router.push('/')"
     /></template>
     <template #right

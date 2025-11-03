@@ -14,6 +14,7 @@ const scrollToTop = () => {
       src="/logo.svg"
       alt="Logo"
       class="w-[50px]"
+      size="50px"
       :style="{ transform: rotation }"
       @click="scrollToTop"
     />

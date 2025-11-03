@@ -25,6 +25,7 @@
     "nuxt": "^4.2.0",
     "nuxt-charts": "1.0.2",
     "public-google-sheets-parser": "^1.5.4",
+    "sharp": "^0.34.4",
     "typescript": "^5.6.3",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3"
