@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@source not "../../../.nuxt/ui/**";
+
 @theme {
   --font-sans: system-ui, sans-serif;
   --font-sans-cn: "Noto Sans SC", system-ui, sans-serif;
