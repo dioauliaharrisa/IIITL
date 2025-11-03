@@ -28,26 +28,26 @@ export default defineNuxtConfig({
     },
   },
   fonts: {
-    families: [
-      { name: "Noto Sans", provider: "google" },
-      { name: "Noto Sans SC", provider: "google" }, // Simplified Chinese (SC)
-      { name: "Noto Sans TC", provider: "google" }, // Traditional Chinese (TC)
-      // Optional: Add a serif version if needed
-      // { name: "Noto Serif TC", provider: "google" },
-    ],
-    defaults: {
-      weights: [400],
-      styles: ["normal", "italic"],
-      subsets: [
-        "cyrillic-ext",
-        "cyrillic",
-        "greek-ext",
-        "greek",
-        "vietnamese",
-        "latin-ext",
-        "latin",
-      ],
-    },
+    // families: [
+    //   { name: "Noto Sans", provider: "google" },
+    //   { name: "Noto Sans SC", provider: "google" }, // Simplified Chinese (SC)
+    //   { name: "Noto Sans TC", provider: "google" }, // Traditional Chinese (TC)
+    //   // Optional: Add a serif version if needed
+    //   // { name: "Noto Serif TC", provider: "google" },
+    // ],
+    // defaults: {
+    //   weights: [400],
+    //   styles: ["normal", "italic"],
+    //   subsets: [
+    //     "cyrillic-ext",
+    //     "cyrillic",
+    //     "greek-ext",
+    //     "greek",
+    //     "vietnamese",
+    //     "latin-ext",
+    //     "latin",
+    //   ],
+    // },
   },
   i18n: {
     strategy: "no_prefix",
@@ -77,11 +77,6 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "en", // or 'id' for Indonesian
       },
-      noscript: [
-        {
-          children: '<link rel="stylesheet" href="/_nuxt/entry.C1yHPxNT.css">',
-        },
-      ],
     },
   },
   nitro: {

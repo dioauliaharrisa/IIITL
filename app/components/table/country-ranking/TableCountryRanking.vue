@@ -40,7 +40,7 @@ const columns = [
     <div class="p-4 bg-primary">
       <h2
         :class="[
-          'font-sans text-xl uppercase text-white transition-all duration-1000 transform',
+          'text-xl uppercase text-white transition-all duration-1000 transform',
           isOpen ? 'font-semibold' : 'font-normal',
         ]"
       >
@@ -52,7 +52,6 @@ const columns = [
         <UTable :data="countries" :columns="columns" class="flex-1">
           <template #name-cell="{ row }">
             <div class="flex items-center gap-2">
-             
               <span>{{ row.original.name }}</span>
             </div>
           </template>
