@@ -77,6 +77,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "en", // or 'id' for Indonesian
       },
+
     },
   },
   nitro: {
