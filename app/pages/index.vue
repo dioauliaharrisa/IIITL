@@ -16,6 +16,7 @@ parser.parse().then((data) => {
       <!-- <MarqueeFlags /> -->
       <SectionVisionAndMission />
       <LazySectionCheckCurrentStanding />
+      <LazySectionSelectProfile />
       <TableCountryRanking />
       <LazyTableIndividualScoreRanking />
       <LazyTableHighestScore />

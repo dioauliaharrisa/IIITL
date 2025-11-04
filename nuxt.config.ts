@@ -63,21 +63,23 @@ export default defineNuxtConfig({
         name: "Traditional Chinese",
         file: "tw.json",
       },
-      {
-        code: "cn",
-        name: "Simplified Chinese",
-        file: "cn.json",
-      },
+      // {
+      //   code: "cn",
+      //   name: "Simplified Chinese",
+      //   file: "cn.json",
+      // },
     ],
   },
   app: {
     head: {
       title: "IIITL 2026",
-      link: [{ rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
+      link: [
+        { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
+        { rel: "preconnect", href: "https://docs.google.com" },
+      ],
       htmlAttrs: {
         lang: "en", // or 'id' for Indonesian
       },
-
     },
   },
   nitro: {
