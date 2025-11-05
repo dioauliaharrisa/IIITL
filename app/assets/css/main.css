@@ -5,7 +5,7 @@
 
 @theme {
   --font-sans: system-ui, sans-serif;
-  --font-sans-cn: "Noto Sans SC", system-ui, sans-serif;
+  --font-sans-cn: system-ui, sans-serif;
 }
 :root {
   --ui-primary: #009a44;

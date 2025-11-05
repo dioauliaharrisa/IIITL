@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 
-const profiles = ref<string[]>([]);
+const profiles = ref<{ label: string; value: string }[]>([]);
 const value = ref("");
 
 const options = { sheetName: "Display_Individual_Score", useFormat: true };
@@ -10,9 +10,11 @@ const parser = new PublicGoogleSheetsParser(
   options
 );
 parser.parse().then((data) => {
+  console.log("🦆 ~ data:", data);
   const mappedProfiles = data.map((item) => {
-    return item.nick;
+    return { label: item.nick, value: item["discord name"] };
   });
+  console.log("🦆 ~ mappedProfiles:", mappedProfiles);
   profiles.value = mappedProfiles;
 });
 </script>
@@ -21,6 +23,7 @@ parser.parse().then((data) => {
   <div class="p-4 flex flex-col gap-4 items-center">
     <USelectMenu
       v-model="value"
+      value-key="value"
       variant="subtle"
       placeholder="Check your profile"
       :items="profiles"

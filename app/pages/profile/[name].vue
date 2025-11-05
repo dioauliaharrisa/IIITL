@@ -1,4 +1,21 @@
-<script setup>
+<script setup lang="ts">
+import PublicGoogleSheetsParser from "public-google-sheets-parser";
+const route = useRoute();
+const options = { sheetName: "Display_Individual_Score", useFormat: true };
+const parser = new PublicGoogleSheetsParser(
+  "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
+  options
+);
+
+const profile = ref();
+console.log("🦆 ~ profile:", profile);
+
+parser.parse().then((data) => {
+  const name = decodeURIComponent(route.params.name as string);
+  const filteredProfile = data.find((item) => item["discord name"] === name);
+  profile.value = filteredProfile;
+});
+
 const classContainerHeading =
   "font-heading font-bold h-24 flex items-center justify-center";
 </script>
@@ -7,9 +24,7 @@ const classContainerHeading =
   <div class="p-4">
     <div class="flex gap-4">
       <div class="relative w-[120px] h-[120px]">
-        <!-- keep parent relative -->
         <div class="rounded-full overflow-hidden w-full h-full">
-          <!-- image wrapper -->
           <NuxtImg
             src="https://cdn.discordapp.com/avatars/482905063505920022/7aa2186844c2710c1c30a0445f2d7655.webp?size=240"
             alt="mandarinduck"
@@ -19,16 +34,18 @@ const classContainerHeading =
           />
         </div>
 
-        <NuxtImg
-          class="absolute bottom-0 right-2 bg-[#ca9654] z-[9999] shadow-md"
+        <!-- <NuxtImg
+          class="absolute bottom-0 right-2 bg-[#ca9654] z-9999 shadow-md"
           width="30"
           :alt="'Indonesia'"
           :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/ID.svg`"
-        />
+        /> -->
       </div>
       <div>
-        <h3 class="text-xl font-semibold">Dio</h3>
-        <h4 class="text-lg">KOMODO D.E.A.D.</h4>
+        <h3 class="text-xl font-semibold">
+          {{ profile?.nick ?? "Player" }}
+        </h3>
+        <h4 class="text-lg">{{ profile?.["team name"] ?? "Team" }}</h4>
       </div>
     </div>
     <div class="py-4">

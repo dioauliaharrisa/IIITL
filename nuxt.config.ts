@@ -73,6 +73,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "IIITL 2026",
+      meta: [
+        {
+          name: "description",
+          content:
+            "IIITL 2026 tournament stats, player rankings, individual scores, and records.",
+        },
+      ],
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
         { rel: "preconnect", href: "https://docs.google.com" },
