@@ -1,6 +1,6 @@
 <script setup>
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
-
+const loading = ref(true);
 const schedule = ref([]);
 const options = { sheetName: "Display_Stream_Schedule", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
@@ -9,13 +9,15 @@ const parser = new PublicGoogleSheetsParser(
 );
 parser.parse().then((data) => {
   schedule.value = data;
-  console.log("🦆 ~ schedule:", schedule.value);
+  loading.value = false; // ✅ added
 });
 </script>
 
 <template>
-  <div class="min-h-[200px]">
+  <div class="min-h-[500px]">
+    <USkeleton v-if="loading" class="h-40 w-[250px]" />
     <UCarousel
+      v-else
       v-slot="{ item }"
       dots
       :items="schedule"

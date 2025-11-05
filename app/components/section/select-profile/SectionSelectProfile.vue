@@ -10,11 +10,10 @@ const parser = new PublicGoogleSheetsParser(
   options
 );
 parser.parse().then((data) => {
-  console.log("🦆 ~ data:", data);
   const mappedProfiles = data.map((item) => {
     return { label: item.nick, value: item["discord name"] };
   });
-  console.log("🦆 ~ mappedProfiles:", mappedProfiles);
+
   profiles.value = mappedProfiles;
 });
 </script>

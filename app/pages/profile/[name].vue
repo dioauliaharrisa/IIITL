@@ -8,7 +8,6 @@ const parser = new PublicGoogleSheetsParser(
 );
 
 const profile = ref();
-console.log("🦆 ~ profile:", profile);
 
 parser.parse().then((data) => {
   const name = decodeURIComponent(route.params.name as string);
