@@ -37,7 +37,8 @@ parser.parse().then((data) => {
         >
           <NuxtImg
             :src="'https://i.imgur.com/hChfMhT.png'"
-            alt="Country Flag"
+            format="webp"
+            alt="Logo"
             class="mx-auto"
             sizes="150px"
             width="150"
