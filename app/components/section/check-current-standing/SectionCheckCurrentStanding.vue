@@ -450,7 +450,7 @@ const xFormatter = (i) => data[i].month;
 
 <template>
   <UModal fullscreen title="Modal fullscreen" :ui="{ header: 'text-white' }">
-    <UButton class="rounded-full p-4 m-4 mx-auto block">
+    <UButton class="rounded-full p-4 m-4 mx-auto block text-white font-bold">
       {{ $t("check_standing_graph") }}</UButton
     >
 
