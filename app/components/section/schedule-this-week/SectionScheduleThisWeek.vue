@@ -36,13 +36,14 @@ parser.parse().then((data) => {
           }"
         >
           <NuxtImg
-            :src="'https://i.imgur.com/hChfMhT.png'"
+            src="https://i.imgur.com/hChfMhT.png"
             format="webp"
             alt="Logo"
             class="mx-auto"
             sizes="150px"
             width="150"
             height="150"
+            quality="70"
           />
 
           <template #footer>

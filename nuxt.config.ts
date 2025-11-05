@@ -94,4 +94,7 @@ export default defineNuxtConfig({
       brotli: true,
     },
   },
+  image: {
+    domains: ["i.imgur.com"],
+  },
 });
