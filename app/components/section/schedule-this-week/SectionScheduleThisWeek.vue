@@ -44,6 +44,7 @@ parser.parse().then((data) => {
             width="150"
             height="150"
             quality="70"
+            :modifiers="{ w: 150, h: 150 }"
           />
 
           <template #footer>
