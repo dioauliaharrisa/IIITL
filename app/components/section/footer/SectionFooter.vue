@@ -5,8 +5,10 @@
         <NuxtImg
           src="/logo_riichi_id.png"
           alt="riichi_id_logo"
+          format="webp"
           width="100"
           height="100"
+          sizes="100px"
           class="object-cover"
         />
 

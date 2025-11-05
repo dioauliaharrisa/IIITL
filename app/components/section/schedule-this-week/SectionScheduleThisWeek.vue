@@ -39,6 +39,9 @@ parser.parse().then((data) => {
             :src="'https://i.imgur.com/hChfMhT.png'"
             alt="Country Flag"
             class="mx-auto"
+            sizes="150px"
+            width="150"
+            height="150"
           />
 
           <template #footer>
