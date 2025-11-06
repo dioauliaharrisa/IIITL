@@ -11,9 +11,12 @@ const value = ref("en");
     <template #title>
       <NuxtImg
         src="/logo_full.svg"
+        quality="70"
+        format="svg"
         alt="Logo"
         class="w-[125px]"
         size="125px"
+        loading="lazy"
         @click="$router.push('/')"
     /></template>
     <template #right

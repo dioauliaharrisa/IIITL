@@ -9,7 +9,8 @@ const parser = new PublicGoogleSheetsParser(
 );
 parser.parse().then((data) => {
   schedule.value = data;
-  loading.value = false; // ✅ added
+  console.log("🦆 ~ schedule:", schedule);
+  loading.value = false;
 });
 </script>
 
@@ -23,16 +24,16 @@ parser.parse().then((data) => {
       :items="schedule"
       class="w-full max-w-xs mx-auto"
     >
-      <pre class="font-semibold">{{ item.schedule }}</pre>
+      <p class="font-semibold">{{ item.schedule }}</p>
       <div class="grid grid-cols-2 gap-4 text-xs h-[375px]">
         <UCard
-          v-for="key in item.listCountries.split(',')"
+          v-for="key in item.listCountries?.split(',')"
           :key="key"
           variant="solid"
           class="flex flex-col justify-between"
           :ui="{
             body: 'p-0',
-            footer: 'p-2 bg-amber-600',
+            footer: 'p-2 bg-red-500',
           }"
         >
           <NuxtImg
