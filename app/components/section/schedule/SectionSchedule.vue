@@ -6,7 +6,12 @@ const isOpen = ref(false);
   <UCollapsible
     :open="isOpen"
     class="w-full flex flex-col gap-2"
-    @update:open="isOpen = $event"
+    @update:open="
+      (v) => {
+        isOpen = v;
+        v && $router.push('/upcoming-games');
+      }
+    "
   >
     <div class="p-4 bg-primary">
       <h2
@@ -20,14 +25,14 @@ const isOpen = ref(false);
     </div>
 
     <template #content>
-      <UTable :data="players" :columns="columns" class="flex-1">
+      <!-- <UTable :data="players" :columns="columns" class="flex-1">
         <template #name-cell="{ row }">
           <div class="flex items-center gap-2">
             <UAvatar :src="row.original.code" />
             <span>{{ row.original.name }}</span>
           </div>
         </template>
-      </UTable>
+      </UTable> -->
     </template>
   </UCollapsible>
 </template>
