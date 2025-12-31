@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border-8 border-red-500 box-border min-h-screen w-full overflow-x-hidden"
+    class="border-8 border-primary box-border min-h-screen w-full overflow-x-hidden"
   >
     <SectionHeader />
     <main>
