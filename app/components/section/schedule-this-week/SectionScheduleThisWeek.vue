@@ -8,8 +8,9 @@ const parser = new PublicGoogleSheetsParser(
   options
 );
 parser.parse().then((data) => {
-  schedule.value = data;
-  console.log("🦆 ~ schedule:", schedule);
+  schedule.value = data.slice(0, 6);
+
+  console.log("🦆 ~ schedule:s", schedule);
   loading.value = false;
 });
 </script>

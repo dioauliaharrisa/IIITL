@@ -2,7 +2,7 @@
   <div>
     <UMain>
       <SectionScheduleThisWeek />
-      <!-- <MarqueeFlags /> -->
+      <MarqueeFlags />
       <SectionVisionAndMission />
       <LazySectionCheckCurrentStanding />
       <LazySectionSelectProfile />
@@ -12,6 +12,6 @@
       <LazyTableMostFourthAvoidantRanking />
       <LazySectionSchedule />
     </UMain>
-    <LazyFloatingButton />
+    <!-- <LazyFloatingButton /> -->
   </div>
 </template>

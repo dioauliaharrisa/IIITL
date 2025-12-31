@@ -34,11 +34,7 @@ const countries = [
       :key="country.code"
       width="30"
       :alt="country.name"
-      :src="
-        country.code === 'TW'
-          ? 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Chinese_Taipei_for_Olympic_Games.svg'
-          : `https://purecatamphetamine.github.io/country-flag-icons/3x2/${country.code}.svg`
-      "
+      :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country.code}.svg`"
     />
   </UMarquee>
 </template>
