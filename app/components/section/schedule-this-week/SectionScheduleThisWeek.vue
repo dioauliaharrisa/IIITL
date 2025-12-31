@@ -1,5 +1,8 @@
 <script setup>
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
+
+import teams from "../../../../team-name-src.json";
+
 const loading = ref(true);
 const schedule = ref([]);
 const options = { sheetName: "Display_Stream_Schedule", useFormat: true };
@@ -13,6 +16,8 @@ parser.parse().then((data) => {
   console.log("🦆 ~ schedule:s", schedule);
   loading.value = false;
 });
+
+const teamMap = Object.fromEntries(teams.map((t) => [t.name, t.src]));
 </script>
 
 <template>
@@ -28,7 +33,7 @@ parser.parse().then((data) => {
       <p class="font-semibold">{{ item.schedule }}</p>
       <div class="grid grid-cols-2 gap-4 text-xs h-[375px]">
         <UCard
-          v-for="key in item.listCountries?.split(',')"
+          v-for="key in item.listCountries?.split(',').map((k) => k.trim())"
           :key="key"
           variant="solid"
           class="flex flex-col justify-between"
@@ -38,7 +43,7 @@ parser.parse().then((data) => {
           }"
         >
           <NuxtImg
-            src="https://i.imgur.com/hChfMhT.png"
+            :src="teamMap[key] ?? 'https://i.imgur.com/hChfMhT.png'"
             format="webp"
             alt="Logo"
             class="mx-auto"
@@ -48,7 +53,6 @@ parser.parse().then((data) => {
             quality="70"
             :modifiers="{ w: 150, h: 150 }"
           />
-
           <template #footer>
             <p class="text-center">{{ key }}</p>
           </template>
