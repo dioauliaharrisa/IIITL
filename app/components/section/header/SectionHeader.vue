@@ -7,12 +7,12 @@ const value = ref("en");
 </script>
 
 <template>
-  <UHeader :toggle="false">
+  <UHeader class="py-2" :toggle="false">
     <template #title>
       <NuxtImg
-        src="/logo_full.svg"
+        src="/LOGO_C.png"
         quality="70"
-        format="svg"
+        format="webp"
         alt="Logo"
         class="w-[125px]"
         size="125px"
