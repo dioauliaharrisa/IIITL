@@ -1,13 +1,21 @@
-<script setup>
+<script setup lang="ts">
+import type { NavigationMenuItem } from "@nuxt/ui";
 const { locales, setLocale } = useI18n();
-//  <button v-for="locale in locales" @click="setLocale(locale.code)">
-//         {{ locale.name }}
-//       </button>
 const value = ref("en");
+
+const route = useRoute();
+const items = computed<NavigationMenuItem[]>(() => [
+  {
+    label: "Teams",
+    to: "/teams",
+    icon: "i-lucide-book-open",
+    active: route.path.startsWith("/teams"),
+  },
+]);
 </script>
 
 <template>
-  <UHeader class="py-2" :toggle="false">
+  <UHeader class="py-2" mode="drawer" :toggle="true">
     <template #title>
       <NuxtImg
         src="/LOGO_C.png"
@@ -28,5 +36,9 @@ const value = ref("en");
         label-key="name"
         @update:model-value="setLocale"
     /></template>
+
+    <template #body>
+      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+    </template>
   </UHeader>
 </template>
