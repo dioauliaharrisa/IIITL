@@ -2,6 +2,7 @@
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 
 import teams from "../../../../team-name-src.json";
+const teamMap = Object.fromEntries(teams.map((t) => [t.name, t.src]));
 
 const loading = ref(true);
 const schedule = ref([]);
@@ -16,8 +17,6 @@ parser.parse().then((data) => {
   console.log("🦆 ~ schedule:s", schedule);
   loading.value = false;
 });
-
-const teamMap = Object.fromEntries(teams.map((t) => [t.name, t.src]));
 </script>
 
 <template>
@@ -41,6 +40,7 @@ const teamMap = Object.fromEntries(teams.map((t) => [t.name, t.src]));
             body: 'p-0',
             footer: 'p-2 bg-red-500',
           }"
+          @click="$router.push(`/team/${key}`)"
         >
           <NuxtImg
             :src="teamMap[key] ?? 'https://i.imgur.com/hChfMhT.png'"

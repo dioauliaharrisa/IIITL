@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
+
+import teams from "../../../../team-name-src.json";
+const teamMap = Object.fromEntries(teams.map((t) => [t.name, t.src]));
+
 const route = useRoute();
 const options = { sheetName: "Display_Individual_Score", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
   "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
   options
+);
+
+const teamName = route.params.teamname as string;
+const teamSrc = computed(
+  () => teamMap[teamName] ?? "https://i.imgur.com/hChfMhT.png"
 );
 
 const profile = ref();
@@ -25,29 +34,36 @@ const classContainerHeading =
       <div class="relative w-[120px] h-[120px]">
         <div class="rounded-full overflow-hidden w-full h-full">
           <NuxtImg
-            src="https://cdn.discordapp.com/avatars/482905063505920022/7aa2186844c2710c1c30a0445f2d7655.webp?size=240"
+            :src="teamSrc ?? 'https://i.imgur.com/hChfMhT.png'"
             alt="mandarinduck"
             width="120"
             height="120"
             class="object-cover w-full h-full"
           />
         </div>
-
-        <!-- <NuxtImg
-          class="absolute bottom-0 right-2 bg-[#ca9654] z-9999 shadow-md"
-          width="30"
-          :alt="'Indonesia'"
-          :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/ID.svg`"
-        /> -->
       </div>
       <div>
         <h3 class="text-xl font-semibold">
-          {{ profile?.nick ?? "Player" }}
+          {{ teamName ?? "Player" }}
         </h3>
         <h4 class="text-lg">{{ profile?.["team name"] ?? "Team" }}</h4>
       </div>
     </div>
     <div class="py-4">
+      <div class="flex-1 text-center">
+        <p :class="classContainerHeading">Members</p>
+        <div class="flex justify-center gap-2 mt-2">
+          <NuxtImg
+            v-for="(src, i) in team?.membersSrc ?? []"
+            :key="i"
+            :src="src"
+            width="40"
+            height="40"
+            class="rounded-full"
+            alt="member"
+          />
+        </div>
+      </div>
       <div class="flex-1 text-center">
         <p :class="classContainerHeading">Placings Records</p>
         <p class="">1/2/3/4</p>
