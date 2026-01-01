@@ -40,7 +40,7 @@ const getLogos = (item: any) =>
       >
         <!-- Date -->
         <div class="text-center font-semibold text-sm w-12">
-          <div>{{ game.month ?? 1 }}/{{ game.day ?? 12 }}</div>
+          <div>{{ game?.date }}</div>
           <div class="text-xs text-gray-500">{{ game.weekday }}</div>
         </div>
 
