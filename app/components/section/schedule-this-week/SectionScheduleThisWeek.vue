@@ -29,7 +29,7 @@ parser.parse().then((data) => {
       :items="schedule"
       class="w-full max-w-xs mx-auto"
     >
-      <p class="font-semibold">{{ item.schedule }}</p>
+      <p class="font-semibold text-xl py-2">{{ item.schedule }}</p>
       <div class="grid grid-cols-2 gap-4 text-xs h-[375px]">
         <UCard
           v-for="key in item.listCountries?.split(',').map((k) => k.trim())"

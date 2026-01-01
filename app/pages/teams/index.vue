@@ -32,16 +32,17 @@ import teams from "../../../../team-name-src.json";
           {{ team.name }}
         </p>
 
-        <!-- Members
-        <div class="flex gap-2 mt-3">
+        <!-- Members -->
+        <!-- <div class="flex gap-2 mt-3">
           <NuxtImg
             v-for="(m, i) in team.membersSrc"
             :key="i"
-            :src="m"
+            :src="m.src"
             class="w-8 h-8 rounded-full"
             alt="member"
             format="webp"
           />
+          <pre>{{ m.src }}</pre>
         </div> -->
       </div>
     </div>

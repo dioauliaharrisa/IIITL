@@ -26,6 +26,10 @@ parser.parse().then((data) => {
 
 const classContainerHeading =
   "font-heading font-bold h-24 flex items-center justify-center";
+
+const currentTeam = computed(() => teams.find((t) => t.name === teamName));
+const teamMembers = computed(() => currentTeam.value?.membersSrc ?? []);
+console.log("🦆 ~ teamMembers:", teamMembers);
 </script>
 
 <template>
@@ -54,13 +58,14 @@ const classContainerHeading =
         <p :class="classContainerHeading">Members</p>
         <div class="flex justify-center gap-2 mt-2">
           <NuxtImg
-            v-for="(src, i) in team?.membersSrc ?? []"
+            v-for="(member, i) in teamMembers"
             :key="i"
-            :src="src"
+            :src="member.src || 'https://i.imgur.com/hChfMhT.png'"
             width="40"
             height="40"
             class="rounded-full"
             alt="member"
+            @click="$router.push(`/profile/${member.name}`)"
           />
         </div>
       </div>
