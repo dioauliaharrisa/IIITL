@@ -1,18 +1,49 @@
 <script setup lang="ts">
+import teams from "../../../../team-name-src.json";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 const route = useRoute();
-const options = { sheetName: "Display_Individual_Score", useFormat: true };
+const playerName = computed(() =>
+  decodeURIComponent(route.params.name as string)
+);
+
+const options = { sheetName: "MARINATED", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
-  "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
+  "1G4VXF7ewoXhF--UWzn80E98QQOggNbXz4x7sU9mzGWw",
   options
 );
 
 const profile = ref();
 
 parser.parse().then((data) => {
-  const name = decodeURIComponent(route.params.name as string);
-  const filteredProfile = data.find((item) => item["discord name"] === name);
+  console.log("🦆 ~ data:", data);
+  const filteredProfile = data.find(
+    (item) => item["discordId"] === playerName.value
+  );
+  console.log("🦆 ~ filteredProfile:", filteredProfile);
   profile.value = filteredProfile;
+});
+
+// const currentTeam = computed(() =>
+//   teams.find((t) => t.membersSrc?.some((m) => m.name === playerName.value))
+// );
+// const teamMembers = computed(() => currentTeam.value?.membersSrc ?? []);
+
+const excludedKeys = [
+  "nick",
+  "teamName",
+  "discordId",
+  "RC Player Name",
+  "1st",
+  "2nd",
+  "3rd",
+  "4th",
+];
+
+const statEntries = computed(() => {
+  if (!profile.value) return [];
+  return Object.entries(profile.value).filter(
+    ([key]) => !excludedKeys.includes(key)
+  );
 });
 
 const classContainerHeading =
@@ -44,13 +75,18 @@ const classContainerHeading =
         <h3 class="text-xl font-semibold">
           {{ profile?.nick ?? "Player" }}
         </h3>
-        <h4 class="text-lg">{{ profile?.["team name"] ?? "Team" }}</h4>
+        <h4 class="text-lg">{{ profile?.teamName ?? "Team" }}</h4>
+        <h4 class="text-lg">{{ profile?.discordId ?? "Discord ID" }}</h4>
       </div>
     </div>
     <div class="py-4">
       <div class="flex-1 text-center">
         <p :class="classContainerHeading">Placings Records</p>
-        <p class="">1/2/3/4</p>
+        <p class="">
+          {{ profile["1st"] }}/{{ profile["2nd"] }}/{{ profile["3rd"] }}/{{
+            profile["4th"]
+          }}
+        </p>
       </div>
       <div class="grid grid-cols-3 gap-4 mt-4">
         <div class="text-center">
@@ -73,6 +109,16 @@ const classContainerHeading =
           </div>
           <p class="font-bold text-lg text-blue-600">89.47%</p>
         </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+      <div
+        v-for="[key, value] in statEntries"
+        :key="key"
+        class="p-4 rounded-lg shadow text-center border"
+      >
+        <p class="text-sm text-gray-500 break-all">{{ key }}</p>
+        <p class="text-lg font-bold">{{ value }}</p>
       </div>
     </div>
   </div>

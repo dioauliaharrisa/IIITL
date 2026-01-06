@@ -4,7 +4,7 @@ import PublicGoogleSheetsParser from "public-google-sheets-parser";
 const profiles = ref<{ label: string; value: string }[]>([]);
 const value = ref("");
 
-const options = { sheetName: "Display_Individual_Score", useFormat: true };
+const options = { sheetName: "Display_Individual_Graph", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
   "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
   options
