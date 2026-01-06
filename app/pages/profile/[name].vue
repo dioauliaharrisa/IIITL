@@ -39,6 +39,25 @@ const excludedKeys = [
   "4th",
 ];
 
+const mainStatLabels = [
+  "Number of Hands",
+  "Win Rate",
+  "Average Points",
+  "Deal In Rate",
+  "Riichi Rate",
+  "Tsumo Rate",
+  "Average Rank",
+];
+
+const otherStatLabels = [
+  "Average Dora",
+  "Dora",
+  "Ura Dora",
+  "Ippatsu Rate",
+  "Fuuro Rate",
+  "Riichi Win Rate",
+];
+
 const statEntries = computed(() => {
   if (!profile.value) return [];
   return Object.entries(profile.value).filter(
@@ -111,15 +130,32 @@ const classContainerHeading =
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
-      <div
-        v-for="[key, value] in statEntries"
-        :key="key"
-        class="p-4 rounded-lg shadow text-center border"
-      >
-        <p class="text-sm text-gray-500 break-all">{{ key }}</p>
-        <p class="text-lg font-bold">{{ value }}</p>
-      </div>
+    <!-- <div class="grid grid-cols-2 gap-4 mt-6"> -->
+    <!-- <div class="mt-6 space-y-2"> -->
+
+    <!-- Main Statistics -->
+    <h3 class="mt-6 mb-2 text-lg font-semibold">Main Statistics</h3>
+    <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-2">
+      <template v-for="label in mainStatLabels" :key="label">
+        <span class="text-sm text-gray-500">{{ label }}</span>
+        <span class="font-semibold text-right">
+          {{ profile?.[label] ?? "-" }}
+        </span>
+      </template>
     </div>
+
+    <!-- Other Statistics -->
+    <h3 class="mt-6 mb-2 text-lg font-semibold">Other Statistics</h3>
+    <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-2">
+      <template v-for="label in otherStatLabels" :key="label">
+        <span class="text-sm text-gray-500">{{ label }}</span>
+        <span class="font-semibold text-right">
+          {{ profile?.[label] ?? "-" }}
+        </span>
+      </template>
+    </div>
+
+    <!-- </div> -->
+    <!-- </div> -->
   </div>
 </template>
