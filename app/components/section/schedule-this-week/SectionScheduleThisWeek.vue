@@ -47,9 +47,8 @@ parser.parse().then((data) => {
             format="webp"
             alt="Logo"
             class="mx-auto"
-            sizes="150px"
-            width="150"
-            height="150"
+            width="200"
+            height="170"
             quality="70"
             :modifiers="{ w: 150, h: 150 }"
           />
