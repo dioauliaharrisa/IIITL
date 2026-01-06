@@ -83,12 +83,12 @@ const classContainerHeading =
           />
         </div>
 
-        <!-- <NuxtImg
+        <NuxtImg
           class="absolute bottom-0 right-2 bg-[#ca9654] z-9999 shadow-md"
           width="30"
           :alt="'Indonesia'"
           :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/ID.svg`"
-        /> -->
+        />
       </div>
       <div>
         <h3 class="text-xl font-semibold">
@@ -116,20 +116,26 @@ const classContainerHeading =
             <p>Total Individual Points</p>
           </div>
           <div>
-            <p class="font-bold text-lg text-green-600">+339.8</p>
+            <p class="font-bold text-lg text-green-600">
+              {{ profile?.["Total Points"] }}
+            </p>
           </div>
         </div>
         <div class="text-center">
           <div :class="classContainerHeading">
             <p>Highest Score</p>
           </div>
-          <p class="font-bold text-lg">59,400</p>
+          <p class="font-bold text-lg text-red-600">
+            {{ profile?.["Highest Score"] }}
+          </p>
         </div>
         <div class="text-center">
           <div :class="classContainerHeading">
             <p>4th Avoidance rate</p>
           </div>
-          <p class="font-bold text-lg text-blue-600">89.47%</p>
+          <p class="font-bold text-lg text-blue-600">
+            {{ profile?.["4th Avoidance Rate"] }}
+          </p>
         </div>
       </div>
     </div>
