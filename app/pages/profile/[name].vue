@@ -15,18 +15,43 @@ const parser = new PublicGoogleSheetsParser(
 const profile = ref();
 
 parser.parse().then((data) => {
-  console.log("🦆 ~ data:", data);
   const filteredProfile = data.find(
     (item) => item["discordId"] === playerName.value
   );
-  console.log("🦆 ~ filteredProfile:", filteredProfile);
   profile.value = filteredProfile;
 });
 
-// const currentTeam = computed(() =>
-//   teams.find((t) => t.membersSrc?.some((m) => m.name === playerName.value))
-// );
-// const teamMembers = computed(() => currentTeam.value?.membersSrc ?? []);
+const currentTeam = computed(() =>
+  teams.find((t) => t.membersSrc?.some((m) => m.name === profile.value?.nick))
+);
+console.log("🦆 ~ currentTeam:", profile);
+
+const playerSrc = computed(() => {
+  if (profile.value) {
+    const keys = [
+      "displayPicture",
+      "Display Picture",
+      "avatar",
+      "Avatar",
+      "img",
+      "image",
+      "profileImage",
+      "Profile Image",
+      "profile_image",
+      "display_picture",
+    ];
+    for (const k of keys) {
+      const v = profile.value[k];
+      if (v) return v;
+    }
+  }
+
+  const members = currentTeam.value?.membersSrc ?? [];
+  const found = members.find((m: any) => m.name === profile.value?.nick);
+  if (found?.src) return found.src;
+
+  return "https://i.imgur.com/hChfMhT.png";
+});
 
 const excludedKeys = [
   "nick",
@@ -75,8 +100,8 @@ const classContainerHeading =
       <div class="relative w-[120px] h-[120px]">
         <div class="rounded-full overflow-hidden w-full h-full">
           <NuxtImg
-            src="https://cdn.discordapp.com/avatars/482905063505920022/7aa2186844c2710c1c30a0445f2d7655.webp?size=240"
-            alt="mandarinduck"
+            :src="playerSrc"
+            alt="X"
             width="120"
             height="120"
             class="object-cover w-full h-full"
