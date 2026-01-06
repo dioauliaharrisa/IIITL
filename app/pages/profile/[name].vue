@@ -24,7 +24,6 @@ parser.parse().then((data) => {
 const currentTeam = computed(() =>
   teams.find((t) => t.membersSrc?.some((m) => m.name === profile.value?.nick))
 );
-console.log("🦆 ~ currentTeam:", profile);
 
 const playerSrc = computed(() => {
   if (profile.value) {
@@ -83,13 +82,6 @@ const otherStatLabels = [
   "Riichi Win Rate",
 ];
 
-const statEntries = computed(() => {
-  if (!profile.value) return [];
-  return Object.entries(profile.value).filter(
-    ([key]) => !excludedKeys.includes(key)
-  );
-});
-
 const classContainerHeading =
   "font-heading font-bold h-24 flex items-center justify-center";
 </script>
@@ -112,7 +104,7 @@ const classContainerHeading =
           class="absolute bottom-0 right-2 bg-[#ca9654] z-9999 shadow-md"
           width="30"
           :alt="'Indonesia'"
-          :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/ID.svg`"
+          :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/${profile?.countryCode}.svg`"
         />
       </div>
       <div>
