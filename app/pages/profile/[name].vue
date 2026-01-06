@@ -95,7 +95,10 @@ const classContainerHeading =
           {{ profile?.nick ?? "Player" }}
         </h3>
         <h4 class="text-lg">{{ profile?.teamName ?? "Team" }}</h4>
-        <h4 class="text-lg">{{ profile?.discordId ?? "Discord ID" }}</h4>
+        <h4 class="text-lg flex items-center gap-2">
+          <Icon name="ic:baseline-discord" class="w-5 h-5 text-[#5865F2]" />
+          {{ profile?.discordId ?? "Discord ID" }}
+        </h4>
       </div>
     </div>
     <div class="py-4">
