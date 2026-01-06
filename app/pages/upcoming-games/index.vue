@@ -13,7 +13,6 @@ const parser = new PublicGoogleSheetsParser(
 parser.parse().then((data) => {
   schedule.value = data;
 
-  console.log("🦆 ~ schedule:s", schedule);
   loading.value = false;
 });
 

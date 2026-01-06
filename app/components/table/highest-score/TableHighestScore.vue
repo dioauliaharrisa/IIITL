@@ -1,5 +1,20 @@
 <script setup>
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
+
+import teams from "../../../../team-name-src.json";
+
+const findTeamSrc = (name) => {
+  if (!name) return null;
+  const target = name.toString().trim().toLowerCase();
+  for (const t of teams) {
+    const m = t.membersSrc?.find(
+      (mm) => mm.name?.toString().trim().toLowerCase() === target
+    );
+    if (m?.src) return m.src;
+  }
+  return null;
+};
+
 const options = {
   sheetName: "Display_Highest_Scorer_Ranking",
   useFormat: true,
@@ -10,7 +25,15 @@ const parser = new PublicGoogleSheetsParser(
 );
 const players = ref([]);
 parser.parse().then((data) => {
-  players.value = data;
+  players.value = data.map((p) => {
+    const existing =
+      p.displayPicture || p.avatar || p.img || p.image || p.profileImage;
+    const src =
+      existing ||
+      findTeamSrc(p.name ?? p.nick ?? p["discord name"] ?? p.discordId) ||
+      "https://i.imgur.com/hChfMhT.png";
+    return { ...p, displayPicture: src };
+  });
 });
 const isOpen = ref(false);
 

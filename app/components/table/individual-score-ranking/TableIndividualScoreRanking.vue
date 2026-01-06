@@ -1,5 +1,19 @@
 <script setup>
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
+import teams from "../../../../team-name-src.json";
+
+const findTeamSrc = (name) => {
+  if (!name) return null;
+  const target = name.toString().trim().toLowerCase();
+  console.log("🦆 ~ findTeamSrc ~ target:", target);
+  for (const t of teams) {
+    const m = t.membersSrc?.find(
+      (mm) => mm.name?.toString().trim().toLowerCase() === target
+    );
+    if (m?.src) return m.src;
+  }
+  return null;
+};
 const options = { sheetName: "Display_Individual_Ranking", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
   "1G4VXF7ewoXhF--UWzn80E98QQOggNbXz4x7sU9mzGWw",
@@ -7,7 +21,11 @@ const parser = new PublicGoogleSheetsParser(
 );
 const players = ref([]);
 parser.parse().then((data) => {
-  players.value = data;
+  players.value = data.map((p) => {
+    const src = findTeamSrc(p.nick);
+    return { ...p, displayPicture: src };
+  });
+  console.log("🦆 ~ data:", data);
 });
 // const players = [
 //   {
