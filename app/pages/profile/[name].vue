@@ -83,9 +83,9 @@ const classContainerHeading =
       <div class="flex-1 text-center">
         <p :class="classContainerHeading">Placings Records</p>
         <p class="">
-          {{ profile["1st"] }}/{{ profile["2nd"] }}/{{ profile["3rd"] }}/{{
-            profile["4th"]
-          }}
+          {{ profile?.["1st"] }}/{{ profile?.["2nd"] }}/{{
+            profile?.["3rd"]
+          }}/{{ profile?.["4th"] }}
         </p>
       </div>
       <div class="grid grid-cols-3 gap-4 mt-4">
