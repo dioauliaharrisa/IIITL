@@ -13,6 +13,7 @@ const parser = new PublicGoogleSheetsParser(
 );
 parser.parse().then((data) => {
   schedule.value = data.slice(0, 6);
+  console.log("🦆 ~ schedule.value :", schedule.value);
 
   loading.value = false;
 });
@@ -42,7 +43,7 @@ parser.parse().then((data) => {
           @click="$router.push(`/team/${key}`)"
         >
           <NuxtImg
-            :src="teamMap[key] ?? 'https://i.imgur.com/hChfMhT.png'"
+            :src="teamMap[key] || ''"
             format="webp"
             alt="Logo"
             class="mx-auto"

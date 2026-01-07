@@ -6,6 +6,7 @@ import teams from "../../../../team-name-src.json";
 const findTeamSrc = (name) => {
   if (!name) return null;
   const target = name.toString().trim().toLowerCase();
+  console.log("🦆 ~ findTeamSrc ~ target:", target);
   for (const t of teams) {
     const m = t.membersSrc?.find(
       (mm) => mm.name?.toString().trim().toLowerCase() === target
@@ -26,12 +27,7 @@ const parser = new PublicGoogleSheetsParser(
 const players = ref([]);
 parser.parse().then((data) => {
   players.value = data.map((p) => {
-    const existing =
-      p.displayPicture || p.avatar || p.img || p.image || p.profileImage;
-    const src =
-      existing ||
-      findTeamSrc(p.name ?? p.nick ?? p["discord name"] ?? p.discordId) ||
-      "https://i.imgur.com/hChfMhT.png";
+    const src = findTeamSrc(p.nick);
     return { ...p, displayPicture: src };
   });
 });
