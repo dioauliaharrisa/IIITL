@@ -17,6 +17,8 @@ const countries = [
   { name: "Norway", code: "NO" },
   { name: "Ukraine", code: "UA" },
   { name: "Vietnam", code: "VN" },
+  { name: "Chile", code: "CL" },
+  { name: "Portugal", code: "PT" },
 ];
 </script>
 

@@ -330,12 +330,18 @@
         "name": "Kind Kakapo",
         "src": "https://cdn.discordapp.com/avatars/131784111957344256/5757bfa41b027ae8c05b458f6503d16a.webp?size=80"
       },
-      { "name": "Zuvar", "src": "" },
+      {
+        "name": "Zuvar",
+        "src": "https://cdn.discordapp.com/avatars/937436120776589332/f028c5eeaf7c3130922b8bcb8a314af0.webp?size=80"
+      },
       {
         "name": "Совiсть",
         "src": "https://cdn.discordapp.com/avatars/494571214099054592/8b454d2b04c86755382bdbe4e259554d.webp?size=80"
       },
-      { "name": "Tialary", "src": "" }
+      {
+        "name": "Tialary",
+        "src": "https://cdn.discordapp.com/avatars/240153225607512066/2548e6541d0587ff0c9d0d891663e9f3.webp?size=80"
+      }
     ]
   },
   {
