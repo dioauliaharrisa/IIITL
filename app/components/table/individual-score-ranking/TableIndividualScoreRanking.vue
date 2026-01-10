@@ -5,7 +5,6 @@ import teams from "../../../../team-name-src.json";
 const findTeamSrc = (name) => {
   if (!name) return null;
   const target = name.toString().trim().toLowerCase();
-  console.log("🦆 ~ findTeamSrc ~ target:", target);
   for (const t of teams) {
     const m = t.membersSrc?.find(
       (mm) => mm.name?.toString().trim().toLowerCase() === target
@@ -25,7 +24,6 @@ parser.parse().then((data) => {
     const src = findTeamSrc(p.nick);
     return { ...p, displayPicture: src };
   });
-  console.log("🦆 ~ data:", data);
 });
 // const players = [
 //   {

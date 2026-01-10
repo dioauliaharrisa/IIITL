@@ -13,7 +13,6 @@ const parser = new PublicGoogleSheetsParser(
 );
 parser.parse().then((data) => {
   schedule.value = data.slice(0, 6);
-  console.log("🦆 ~ schedule.value :", schedule.value);
 
   loading.value = false;
 });

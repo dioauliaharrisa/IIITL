@@ -6,7 +6,7 @@ const playerName = computed(() =>
   decodeURIComponent(route.params.name as string)
 );
 
-const options = { sheetName: "MARINATED", useFormat: true };
+const options = { sheetName: "MARINATED_Individual", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
   "1G4VXF7ewoXhF--UWzn80E98QQOggNbXz4x7sU9mzGWw",
   options

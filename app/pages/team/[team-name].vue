@@ -12,9 +12,7 @@ const parser = new PublicGoogleSheetsParser(
 );
 
 const teamName = route.params.teamname as string;
-const teamSrc = computed(
-  () => teamMap[teamName] ?? "https://i.imgur.com/hChfMhT.png"
-);
+const teamSrc = computed(() => teamMap[teamName] ?? "https://i.imgur.com/hChfMhT.png");
 
 const profile = ref();
 
@@ -29,7 +27,6 @@ const classContainerHeading =
 
 const currentTeam = computed(() => teams.find((t) => t.name === teamName));
 const teamMembers = computed(() => currentTeam.value?.membersSrc ?? []);
-console.log("🦆 ~ teamMembers:", teamMembers);
 </script>
 
 <template>
