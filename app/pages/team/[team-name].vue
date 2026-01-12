@@ -1,32 +1,14 @@
 <script setup lang="ts">
-import PublicGoogleSheetsParser from "public-google-sheets-parser";
-
-import teams from "../../../../team-name-src.json";
-const teamMap = Object.fromEntries(teams.map((t) => [t.name, t.src]));
-
 const route = useRoute();
-const options = { sheetName: "Display_Individual_Score", useFormat: true };
-const parser = new PublicGoogleSheetsParser(
-  "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
-  options
-);
+const { team, members, fetchTeam } = useTeamStat();
+console.log("🦆 ~ team:", team);
 
-const teamName = route.params.teamname as string;
-const teamSrc = computed(() => teamMap[teamName] ?? "https://i.imgur.com/hChfMhT.png");
-
-const profile = ref();
-
-parser.parse().then((data) => {
-  const name = decodeURIComponent(route.params.name as string);
-  const filteredProfile = data.find((item) => item["discord name"] === name);
-  profile.value = filteredProfile;
+onMounted(() => {
+  fetchTeam(route.params.teamname as string);
 });
 
 const classContainerHeading =
   "font-heading font-bold h-24 flex items-center justify-center";
-
-const currentTeam = computed(() => teams.find((t) => t.name === teamName));
-const teamMembers = computed(() => currentTeam.value?.membersSrc ?? []);
 </script>
 
 <template>
@@ -35,61 +17,68 @@ const teamMembers = computed(() => currentTeam.value?.membersSrc ?? []);
       <div class="relative w-[120px] h-[120px]">
         <div class="rounded-full overflow-hidden w-full h-full">
           <NuxtImg
-            :src="teamSrc ?? 'https://i.imgur.com/hChfMhT.png'"
-            alt="mandarinduck"
+            :src="team?.urlLogoTeam || 'https://i.imgur.com/hChfMhT.png'"
             width="120"
             height="120"
-            class="object-cover w-full h-full"
           />
+
+          <h3 class="text-xl font-semibold">
+            {{ team?.nameTeam || "Team" }}
+          </h3>
+          <p class="text-sm text-gray-600 mt-1">
+            Rank #{{ team?.rank || "-" }}
+          </p>
         </div>
       </div>
       <div>
         <h3 class="text-xl font-semibold">
-          {{ teamName ?? "Player" }}
+          {{ team?.nameTeam || "Team" }}
         </h3>
-        <h4 class="text-lg">{{ profile?.["team name"] ?? "Team" }}</h4>
       </div>
     </div>
     <div class="py-4">
       <div class="flex-1 text-center">
         <p :class="classContainerHeading">Members</p>
         <div class="flex justify-center gap-2 mt-2">
-          <NuxtImg
-            v-for="(member, i) in teamMembers"
+          <div
+            v-for="(member, i) in members"
             :key="i"
-            :src="member.src || 'https://i.imgur.com/hChfMhT.png'"
-            width="40"
-            height="40"
-            class="rounded-full"
-            alt="member"
-            @click="$router.push(`/profile/${member.name}`)"
-          />
+            class="flex flex-col items-center cursor-pointer"
+            @click="$router.push(`/profile/${member.discordId}`)"
+          >
+            <NuxtImg
+              :src="member.src || 'https://i.imgur.com/hChfMhT.png'"
+              width="40"
+              height="40"
+              class="rounded-full"
+            />
+            <span class="text-xs mt-1 text-center">
+              {{ member.name }}
+            </span>
+          </div>
         </div>
       </div>
       <div class="flex-1 text-center">
         <p :class="classContainerHeading">Placings Records</p>
-        <p class="">1/2/3/4</p>
+        <p class="font-semibold">
+          {{ team?.["first"] }}/{{ team?.["second"] }}/{{ team?.["third"] }}/{{
+            team?.["fourth"]
+          }}
+        </p>
       </div>
-      <div class="grid grid-cols-3 gap-4 mt-4">
-        <div class="text-center">
-          <div :class="classContainerHeading">
-            <p>Total Individual Points</p>
-          </div>
-          <div>
-            <p class="font-bold text-lg text-green-600">+339.8</p>
-          </div>
+      <div class="text-center">
+        <div :class="classContainerHeading">
+          <p>Total Points</p>
         </div>
-        <div class="text-center">
-          <div :class="classContainerHeading">
-            <p>Highest Score</p>
-          </div>
-          <p class="font-bold text-lg">59,400</p>
-        </div>
-        <div class="text-center">
-          <div :class="classContainerHeading">
-            <p>4th Avoidance rate</p>
-          </div>
-          <p class="font-bold text-lg text-blue-600">89.47%</p>
+        <div>
+          <p
+            class="font-bold text-lg"
+            :class="
+              Number(team?.Total) >= 0 ? 'text-green-600' : 'text-red-600'
+            "
+          >
+            {{ Number(team?.Total) > 0 ? "+" : "" }}{{ team?.Total }}
+          </p>
         </div>
       </div>
     </div>
