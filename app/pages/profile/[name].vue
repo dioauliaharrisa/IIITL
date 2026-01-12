@@ -6,9 +6,9 @@ const playerName = computed(() =>
   decodeURIComponent(route.params.name as string)
 );
 
-const options = { sheetName: "MARINATED_Individual", useFormat: true };
+const options = { sheetName: "Stat_Individual", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
-  "1G4VXF7ewoXhF--UWzn80E98QQOggNbXz4x7sU9mzGWw",
+  "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
   options
 );
 
@@ -49,21 +49,12 @@ const playerSrc = computed(() => {
   const found = members.find((m: any) => m.name === profile.value?.nick);
   if (found?.src) return found.src;
 
-  return "https://i.imgur.com/hChfMhT.png";
+  return "";
 });
-
-const excludedKeys = [
-  "nick",
-  "teamName",
-  "discordId",
-  "RC Player Name",
-  "1st",
-  "2nd",
-  "3rd",
-  "4th",
-];
+console.log("🦆 ~ playerSrc:", playerSrc);
 
 const mainStatLabels = [
+  "Number of Games",
   "Number of Hands",
   "Win Rate",
   "Average Points",
@@ -104,14 +95,14 @@ const classContainerHeading =
           class="absolute bottom-0 right-2 bg-[#ca9654] z-9999 shadow-md"
           width="30"
           :alt="'Indonesia'"
-          :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/${profile?.countryCode}.svg`"
+          :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/${profile?.['Country Code']}.svg`"
         />
       </div>
       <div>
         <h3 class="text-xl font-semibold">
-          {{ profile?.nick ?? "Player" }}
+          {{ profile?.["Player Name"] ?? "Player" }}
         </h3>
-        <h4 class="text-lg">{{ profile?.teamName ?? "Team" }}</h4>
+        <h4 class="text-lg">{{ profile?.["Team Name"] ?? "Team" }}</h4>
         <h4 class="text-lg flex items-center gap-2">
           <Icon name="ic:baseline-discord" class="w-5 h-5 text-[#5865F2]" />
           {{ profile?.discordId ?? "Discord ID" }}
@@ -134,7 +125,7 @@ const classContainerHeading =
           </div>
           <div>
             <p class="font-bold text-lg text-green-600">
-              {{ profile?.["Total Points"] }}
+              {{ profile?.["Total"] }}
             </p>
           </div>
         </div>
