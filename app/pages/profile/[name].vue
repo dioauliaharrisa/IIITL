@@ -51,7 +51,6 @@ const playerSrc = computed(() => {
 
   return "";
 });
-console.log("🦆 ~ playerSrc:", playerSrc);
 
 const mainStatLabels = [
   "Number of Games",
@@ -124,7 +123,14 @@ const classContainerHeading =
             <p>Total Individual Points</p>
           </div>
           <div>
-            <p class="font-bold text-lg text-green-600">
+            <p
+              class="font-bold text-xl"
+              :class="
+                profile?.['Total'] > 0 ? 'text-green-600' : 'text-red-600'
+              "
+            >
+              <span v-if="profile?.['Total'] > 0">+</span>
+              <span v-else-if="profile?.['Total'] < 0">▲</span>
               {{ profile?.["Total"] }}
             </p>
           </div>
@@ -133,7 +139,7 @@ const classContainerHeading =
           <div :class="classContainerHeading">
             <p>Highest Score</p>
           </div>
-          <p class="font-bold text-lg text-red-600">
+          <p class="font-bold text-xl">
             {{ profile?.["Highest Score"] }}
           </p>
         </div>
@@ -141,7 +147,7 @@ const classContainerHeading =
           <div :class="classContainerHeading">
             <p>4th Avoidance rate</p>
           </div>
-          <p class="font-bold text-lg text-blue-600">
+          <p class="font-bold text-xl">
             {{ profile?.["4th Avoidance Rate"] }}
           </p>
         </div>

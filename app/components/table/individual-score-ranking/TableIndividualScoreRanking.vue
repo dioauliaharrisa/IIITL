@@ -13,18 +13,24 @@ const findTeamSrc = (name) => {
   }
   return null;
 };
-const options = { sheetName: "Display_Individual_Ranking", useFormat: true };
+const options = { sheetName: "Stat_Individual", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
-  "1G4VXF7ewoXhF--UWzn80E98QQOggNbXz4x7sU9mzGWw",
+  "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
   options
 );
 const players = ref([]);
 parser.parse().then((data) => {
-  players.value = data.map((p) => {
-    const src = findTeamSrc(p.nick);
-    return { ...p, displayPicture: src };
-  });
+  players.value = data
+    .map((p) => {
+      const src = findTeamSrc(p.nick);
+      return { ...p, displayPicture: src || p.displayPicture };
+    })
+    .sort((a, b) => Number(b.Total) - Number(a.Total))
+    .slice(0, 10);
+
+  console.log("🦆 ~ players.value:", players.value);
 });
+
 // const players = [
 //   {
 //     name: "Alex Carter",
@@ -122,12 +128,12 @@ const columns = [
     size: 50,
   },
   {
-    accessorKey: "name",
+    accessorKey: "nick",
     header: "Player",
     size: 200,
   },
   {
-    accessorKey: "points",
+    accessorKey: "Total",
     header: "Points",
     size: 100,
   },
@@ -153,10 +159,13 @@ const columns = [
 
     <template #content>
       <UTable :data="players" :columns="columns" class="flex-1">
-        <template #name-cell="{ row }">
+        <template #nick-cell="{ row }">
           <div class="flex items-center gap-2">
-            <UAvatar :src="row.original.displayPicture" />
-            <span>{{ row.original.name }}</span>
+            <UAvatar
+              :src="row.original.displayPicture"
+              :alt="row.original.nick"
+            />
+            <span>{{ row.original.nick }}</span>
           </div>
         </template>
       </UTable>
