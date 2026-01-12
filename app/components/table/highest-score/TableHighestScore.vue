@@ -1,37 +1,9 @@
-<script setup>
-import PublicGoogleSheetsParser from "public-google-sheets-parser";
+<script setup lang="ts">
+const { players, fetchRanking } = useHighestScorerRanking();
 
-import teams from "../../../../team-name-src.json";
+onMounted(fetchRanking);
 
-const findTeamSrc = (name) => {
-  if (!name) return null;
-  const target = name.toString().trim().toLowerCase();
-  for (const t of teams) {
-    const m = t.membersSrc?.find(
-      (mm) => mm.name?.toString().trim().toLowerCase() === target
-    );
-    if (m?.src) return m.src;
-  }
-  return null;
-};
-
-const options = {
-  sheetName: "Display_Highest_Scorer_Ranking",
-  useFormat: true,
-};
-const parser = new PublicGoogleSheetsParser(
-  "1G4VXF7ewoXhF--UWzn80E98QQOggNbXz4x7sU9mzGWw",
-  options
-);
-const players = ref([]);
-parser.parse().then((data) => {
-  players.value = data.map((p) => {
-    const src = findTeamSrc(p.nick);
-    return { ...p, displayPicture: src };
-  });
-});
 const isOpen = ref(false);
-
 const columns = [
   {
     accessorKey: "id",
@@ -40,7 +12,7 @@ const columns = [
     size: 50,
   },
   {
-    accessorKey: "name",
+    accessorKey: "nick",
     header: "Player",
     size: 200,
   },
@@ -71,10 +43,10 @@ const columns = [
 
     <template #content>
       <UTable :data="players" :columns="columns" class="flex-1">
-        <template #name-cell="{ row }">
+        <template #nick-cell="{ row }">
           <div class="flex items-center gap-2">
             <UAvatar :src="row.original.displayPicture" />
-            <span>{{ row.original.name }}</span>
+            <span>{{ row.original.nick }}</span>
           </div>
         </template>
       </UTable>
