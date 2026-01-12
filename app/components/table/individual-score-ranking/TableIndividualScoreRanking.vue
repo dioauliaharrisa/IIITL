@@ -1,18 +1,8 @@
 <script setup>
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
-import teams from "../../../../team-name-src.json";
 
-const findTeamSrc = (name) => {
-  if (!name) return null;
-  const target = name.toString().trim().toLowerCase();
-  for (const t of teams) {
-    const m = t.membersSrc?.find(
-      (mm) => mm.name?.toString().trim().toLowerCase() === target
-    );
-    if (m?.src) return m.src;
-  }
-  return null;
-};
+const { findTeamSrc } = useTeamSrc();
+
 const options = { sheetName: "Stat_Individual", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
   "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
