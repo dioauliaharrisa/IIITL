@@ -307,9 +307,29 @@ parserCompare.parse().then((data) => {
       <template v-for="label in mainStatLabels" :key="label">
         <span class="text-sm text-gray-500">{{ label }}</span>
 
-        <span class="font-semibold text-right">
-          {{ profile?.[label] ?? "-" }}
-        </span>
+        <div class="flex items-center justify-end gap-1">
+          <span class="font-semibold">
+            {{ profile?.[label] ?? "-" }}
+          </span>
+
+          <UPopover v-if="label === 'Number of Games'" placement="top">
+            <UButton
+              icon="i-heroicons-exclamation-circle"
+              color="gray"
+              variant="ghost"
+              size="xs"
+              :ui="{ rounded: 'rounded-full' }"
+              class="-my-1"
+            />
+            <template #content>
+              <p class="p-2 text-xs">
+                need {{ 20 - (profile?.["Number of Games"] || 0) }} games to
+                qualify
+              </p>
+            </template>
+          </UPopover>
+        </div>
+
         <span v-if="profileVS" class="font-semibold text-right text-gray-400">
           {{ profileVS?.[label] ?? "-" }}
         </span>
