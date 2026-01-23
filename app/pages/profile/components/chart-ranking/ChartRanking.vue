@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import teams from "../../../../team-name-src.json";
+// import teams from "../../../../team-name-src.json";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 const props = defineProps<{ playerName?: string }>();
 
@@ -14,9 +14,7 @@ const parser = new PublicGoogleSheetsParser(
 );
 
 parser.parse().then((data) => {
-  console.log("🦆 ~ data:", data);
   const foundData = data.find((item) => item["discordId"] === playerName.value);
-  console.log("🦆 ~ foundData:", foundData, playerName.value);
   if (!foundData) return;
 
   const chartData = Object.entries(foundData)
@@ -44,7 +42,6 @@ parser.parse().then((data) => {
     chartData,
     chartData2,
   };
-  console.log("🦆 ~ merged:", merged);
 
   profile.value = merged;
 });

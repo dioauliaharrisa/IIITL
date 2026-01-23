@@ -5,11 +5,8 @@ import PublicGoogleSheetsParser from "public-google-sheets-parser";
 const route = useRoute();
 const playerName = computed(() => {
   const name = route.params.name;
-  console.log("🦆 ~ name:", name);
   return typeof name === "string" ? decodeURIComponent(name) : "";
 });
-
-console.log("🦆 ~ playerName:", playerName.value);
 
 const options = { sheetName: "Stat_Individual", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
@@ -39,6 +36,7 @@ parser.parse().then((data) => {
   const filteredProfile = data.find(
     (item) => item["discordId"] === playerName.value,
   );
+  console.log("🦆 ~ filteredProfile:", filteredProfile);
   profile.value = filteredProfile;
 });
 
@@ -111,6 +109,10 @@ const otherStatLabels = [
   "Ippatsu Rate",
   "Fuuro Rate",
   "Riichi Win Rate",
+  "Dama Win Rate",
+  "Fuuro Win Rate",
+  "1st Rate",
+  "Rentai Rate",
 ];
 
 //------COMPARE PROFILE SELECTOR------
