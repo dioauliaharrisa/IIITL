@@ -15,6 +15,5 @@
       "
       allowfullscreen
     ></iframe>
-    <!-- allowfullscreen -->
   </div>
 </template>

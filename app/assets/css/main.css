@@ -11,3 +11,9 @@
   --ui-primary: #d46165;
   --ui-secondary: #987f80;
 }
+
+/* Force mobile-like layout */
+body {
+  max-width: 428px; /* iPhone 14 Pro width */
+  margin: 0 auto;
+}

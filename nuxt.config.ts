@@ -79,6 +79,11 @@ export default defineNuxtConfig({
           content:
             "IIITL 2026 tournament stats, player rankings, individual scores, and records.",
         },
+        {
+          name: "viewport",
+          content:
+            "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        },
       ],
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
