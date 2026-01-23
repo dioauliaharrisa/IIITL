@@ -1,15 +1,20 @@
 <script setup lang="ts">
+import ChartRanking from "./components/chart-ranking/ChartRanking.vue";
 import teams from "../../../../team-name-src.json";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 const route = useRoute();
-const playerName = computed(() =>
-  decodeURIComponent(route.params.name as string)
-);
+const playerName = computed(() => {
+  const name = route.params.name;
+  console.log("🦆 ~ name:", name);
+  return typeof name === "string" ? decodeURIComponent(name) : "";
+});
+
+console.log("🦆 ~ playerName:", playerName.value);
 
 const options = { sheetName: "Stat_Individual", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
   "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
-  options
+  options,
 );
 
 const profile = ref();
@@ -21,25 +26,24 @@ const profileVS = computed(() => {
     (p: any) =>
       p["discord name"] === value.value ||
       p.discordId === value.value ||
-      p.nick === value.value
+      p.nick === value.value,
   );
 });
 
 const clearVS = () => {
   value.value = "";
 };
-// ...existing code...
 
 parser.parse().then((data) => {
   listProfiles.value = data;
   const filteredProfile = data.find(
-    (item) => item["discordId"] === playerName.value
+    (item) => item["discordId"] === playerName.value,
   );
   profile.value = filteredProfile;
 });
 
 const currentTeam = computed(() =>
-  teams.find((t) => t.membersSrc?.some((m) => m.name === profile.value?.nick))
+  teams.find((t) => t.membersSrc?.some((m) => m.name === profile.value?.nick)),
 );
 
 const avatarKeys = [
@@ -82,7 +86,7 @@ const playerSrcCompare = computed(() => {
   }
 
   const team = teams.find((t) =>
-    t.membersSrc?.some((m) => m.name === profileObj.nick)
+    t.membersSrc?.some((m) => m.name === profileObj.nick),
   );
   const found = team?.membersSrc?.find((m: any) => m.name === profileObj.nick);
   if (found?.src) return found.src;
@@ -109,15 +113,12 @@ const otherStatLabels = [
   "Riichi Win Rate",
 ];
 
-const classContainerHeading =
-  "font-heading font-bold h-24 flex items-center justify-center";
-
 //------COMPARE PROFILE SELECTOR------
 const listPlayers = ref<{ label: string; value: string }[]>([]);
 const value = ref("");
 const parserCompare = new PublicGoogleSheetsParser(
   "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
-  { sheetName: "Display_Individual_Graph", useFormat: true }
+  { sheetName: "Display_Individual_Graph", useFormat: true },
 );
 parserCompare.parse().then((data) => {
   const mappedProfiles = data.map((item) => {
@@ -126,6 +127,10 @@ parserCompare.parse().then((data) => {
 
   listPlayers.value = mappedProfiles;
 });
+//------------------------------------
+
+const classContainerHeading =
+  "font-heading font-bold h-24 flex items-center justify-center";
 </script>
 
 <template>
@@ -216,6 +221,8 @@ parserCompare.parse().then((data) => {
         @click="clearVS"
       />
     </div>
+
+    <ChartRanking :player-name="route.params.name" />
 
     <div class="py-4">
       <div class="flex items-center justify-center gap-4">

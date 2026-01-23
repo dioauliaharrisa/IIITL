@@ -3,15 +3,16 @@ import PublicGoogleSheetsParser from "public-google-sheets-parser";
 
 const profiles = ref<{ label: string; value: string }[]>([]);
 const value = ref("");
+console.log("🦆 ~ value:", value);
 
 const options = { sheetName: "Display_Individual_Graph", useFormat: true };
 const parser = new PublicGoogleSheetsParser(
   "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
-  options
+  options,
 );
 parser.parse().then((data) => {
   const mappedProfiles = data.map((item) => {
-    return { label: item.nick, value: item["discord name"] };
+    return { label: item.nick, value: item["discordId"] };
   });
 
   profiles.value = mappedProfiles;
