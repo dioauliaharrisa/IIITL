@@ -1,15 +1,12 @@
 <script setup>
-import PublicGoogleSheetsParser from "public-google-sheets-parser";
-const options = { sheetName: "Display_Country_Ranking", useFormat: true };
-const parser = new PublicGoogleSheetsParser(
-  "1G4VXF7ewoXhF--UWzn80E98QQOggNbXz4x7sU9mzGWw",
-  options
-);
-const countries = ref([]);
-parser.parse().then((data) => {
-  countries.value = data;
-});
+const { teams, fetchTeams } = useTeamRanking();
+console.log("🦆 ~ teams:", teams);
+
 const isOpen = ref(false);
+
+onMounted(() => {
+  fetchTeams();
+});
 
 const columns = [
   {
@@ -24,7 +21,7 @@ const columns = [
     size: 200,
   },
   {
-    accessorKey: "points",
+    accessorKey: "Total",
     header: "Points",
     size: 100,
   },
@@ -49,10 +46,23 @@ const columns = [
     </div>
     <template #content>
       <div>
-        <UTable :data="countries" :columns="columns" class="flex-1">
+        <UTable :data="teams" :columns="columns" class="flex-1">
           <template #name-cell="{ row }">
             <div class="flex items-center gap-2">
-              <span>{{ row.original.name }}</span>
+              <UAvatar :src="row.original.urlLogoTeam" />
+              <NuxtImg
+                v-for="country in countries"
+                :key="country.code"
+                width="30"
+                :alt="country.name"
+                :src="`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country.code}.svg`"
+              />
+              <div class="flex flex-col">
+                <span>{{ row.original.nameTeam }}</span>
+                <span class="text-[8px] text-gray-400 leading-none">
+                  {{ row.original.Representing }}
+                </span>
+              </div>
             </div>
           </template>
         </UTable>

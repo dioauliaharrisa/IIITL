@@ -9,7 +9,7 @@ import SectionYoutubeStream from "../../app/components/section/youtube-stream/Se
       <SectionYoutubeStream />
       <MarqueeFlags />
       <SectionVisionAndMission />
-      <LazySectionCheckCurrentStanding />
+      <!-- <LazySectionCheckCurrentStanding /> -->
       <LazySectionSelectProfile />
       <TableCountryRanking />
       <LazyTableIndividualScoreRanking />
