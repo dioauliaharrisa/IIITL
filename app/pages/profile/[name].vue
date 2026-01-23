@@ -36,7 +36,6 @@ parser.parse().then((data) => {
   const filteredProfile = data.find(
     (item) => item["discordId"] === playerName.value,
   );
-  console.log("🦆 ~ filteredProfile:", filteredProfile);
   profile.value = filteredProfile;
 });
 

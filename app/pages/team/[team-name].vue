@@ -1,14 +1,15 @@
 <script setup lang="ts">
+import ChartRanking from "./components/chart-ranking/ChartRanking.vue";
 const route = useRoute();
+console.log("🦆 ~ route:", route);
 const { team, members, fetchTeam } = useTeamStat();
-console.log("🦆 ~ team:", team);
 
 onMounted(() => {
   fetchTeam(route.params.teamname as string);
 });
 
 const classContainerHeading =
-  "font-heading font-bold h-24 flex items-center justify-center";
+  "font-heading font-bold h-12 flex items-center justify-center";
 </script>
 
 <template>
@@ -36,10 +37,10 @@ const classContainerHeading =
         </h3>
       </div>
     </div>
-    <div class="py-4">
+    <div class="py-4 flex flex-col gap-6">
       <div class="flex-1 text-center">
         <p :class="classContainerHeading">Members</p>
-        <div class="flex justify-center gap-2 mt-2">
+        <div class="flex justify-center gap-2">
           <div
             v-for="(member, i) in members"
             :key="i"
@@ -58,6 +59,7 @@ const classContainerHeading =
           </div>
         </div>
       </div>
+      <ChartRanking :team-name="route.params.teamname" />
       <div class="flex-1 text-center">
         <p :class="classContainerHeading">Placings Records</p>
         <p class="font-semibold">
