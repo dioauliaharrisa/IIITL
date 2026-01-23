@@ -43,6 +43,7 @@ export const useTeamStat = () => {
     const data = await parser.parse();
 
     const row = data.find((r) => r["nameTeam"] === teamName);
+    console.log("🦆 ~ fetchTeam ~ row:", row);
 
     if (!row) return;
 

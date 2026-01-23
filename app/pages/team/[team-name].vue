@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import ChartRanking from "./components/chart-ranking/ChartRanking.vue";
 const route = useRoute();
-console.log("🦆 ~ route:", route);
 const { team, members, fetchTeam } = useTeamStat();
+console.log("🦆 ~ team:", team);
 
 onMounted(() => {
   fetchTeam(route.params.teamname as string);

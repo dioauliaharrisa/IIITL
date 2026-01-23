@@ -15,7 +15,6 @@ const parser = new PublicGoogleSheetsParser(
 
 parser.parse().then((data) => {
   const foundData = data.find((item) => item["team name"] === teamName.value);
-  console.log("🦆 ~ data:", teamName.value);
   if (!foundData) return;
 
   const chartData = Object.entries(foundData)
