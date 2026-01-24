@@ -3,7 +3,6 @@ import PublicGoogleSheetsParser from "public-google-sheets-parser";
 
 const profiles = ref<{ label: string; value: string }[]>([]);
 const value = ref("");
-console.log("🦆 ~ value:", value);
 
 const options = { sheetName: "Display_Individual_Graph", useFormat: true };
 const parser = new PublicGoogleSheetsParser(

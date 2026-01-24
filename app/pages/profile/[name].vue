@@ -21,7 +21,7 @@ const profileVS = computed(() => {
   if (!value.value) return undefined;
   return listProfiles.value.find(
     (p: any) =>
-      p["discord name"] === value.value ||
+      p["discordId"] === value.value ||
       p.discordId === value.value ||
       p.nick === value.value,
   );
@@ -33,6 +33,7 @@ const clearVS = () => {
 
 parser.parse().then((data) => {
   listProfiles.value = data;
+  console.log("🦆 ~ filteredProfile :", data, playerName.value);
   const filteredProfile = data.find(
     (item) => item["discordId"] === playerName.value,
   );
@@ -117,13 +118,17 @@ const otherStatLabels = [
 //------COMPARE PROFILE SELECTOR------
 const listPlayers = ref<{ label: string; value: string }[]>([]);
 const value = ref("");
+watch(value, (v) => {
+  console.log("🦆 selected:", v);
+  console.log("🦆 ~ listPlayers:", listPlayers);
+});
 const parserCompare = new PublicGoogleSheetsParser(
   "1EJxSdz98HHM3gPD9u7fjiLWWmu_ZDBV0U1m-Z-a1uGc",
   { sheetName: "Display_Individual_Graph", useFormat: true },
 );
 parserCompare.parse().then((data) => {
   const mappedProfiles = data.map((item) => {
-    return { label: item.nick, value: item["discord name"] };
+    return { label: item.nick, value: item["discordId"] };
   });
 
   listPlayers.value = mappedProfiles;
