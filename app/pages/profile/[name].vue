@@ -96,6 +96,9 @@ const mainStatLabels = [
   "Number of Games",
   "Number of Hands",
   "Win Rate",
+  "Win Rate - Riichi",
+  "Win Rate - Dama",
+  "Win Rate - Fuuro",
   "Average Points",
   "Deal In Rate",
   "Riichi Rate",
@@ -109,8 +112,6 @@ const otherStatLabels = [
   "Ippatsu Rate",
   "Fuuro Rate",
   "Riichi Win Rate",
-  "Dama Win Rate",
-  "Fuuro Win Rate",
   "1st Rate",
   "Rentai Rate",
 ];
