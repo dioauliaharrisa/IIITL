@@ -100,6 +100,7 @@ const mainStatLabels = [
   "Win Rate - Fuuro",
   "Average Points",
   "Deal In Rate",
+  "Average Deal In Value",
   "Riichi Rate",
   "Tsumo Rate",
   "Average Rank",
@@ -111,6 +112,8 @@ const otherStatLabels = [
   "Ippatsu Rate",
   "Fuuro Rate",
   "Riichi Win Rate",
+  "Tsumo Loss Rate",
+  "Avg Tsumo Loss Value",
   "1st Rate",
   "Rentai Rate",
 ];
